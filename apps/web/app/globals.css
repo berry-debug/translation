@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --app-bg: #edf2f7;
+  --app-bg-strong: #e6ebf2;
+  --app-surface: rgba(255, 255, 255, 0.78);
+  --app-surface-strong: rgba(255, 255, 255, 0.94);
+  --app-surface-muted: rgba(240, 245, 250, 0.78);
+  --app-surface-subtle: rgba(233, 239, 246, 0.68);
+  --app-text: #0f1724;
+  --app-text-soft: rgba(15, 23, 36, 0.64);
+  --app-line: rgba(15, 23, 36, 0.1);
+  --app-line-strong: rgba(15, 23, 36, 0.18);
+  --app-accent: #0f1724;
+  --app-accent-soft: rgba(15, 23, 36, 0.08);
+  --app-success: #0f766e;
+  --app-warning: #a16207;
+  --app-danger: #b91c1c;
+  --app-focus: rgba(37, 99, 235, 0.14);
+  --app-shadow: 0 24px 80px rgba(15, 23, 36, 0.08);
+  --app-shadow-soft: 0 12px 32px rgba(15, 23, 36, 0.06);
+}
+
+html {
+  background: var(--app-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.06), transparent 28%),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 26%),
+    linear-gradient(180deg, var(--app-bg) 0%, var(--app-bg-strong) 100%);
+  font-family: "IBM Plex Sans", "SF Pro Text", "Neue Haas Grotesk Text", sans-serif;
+  color: var(--app-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: inherit;
+  font-weight: 560;
+  letter-spacing: -0.04em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(15, 23, 36, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 36, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 22%, transparent 78%);
+  opacity: 0.42;
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background: rgba(15, 23, 36, 0.14);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 36, 0.22);
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  .ui-panel {
+    border: 1px solid var(--app-line);
+    border-radius: 1.5rem;
+    background: var(--app-surface);
+    box-shadow: var(--app-shadow-soft);
+    backdrop-filter: blur(16px);
+  }
+
+  .ui-panel-muted {
+    border: 1px solid var(--app-line);
+    border-radius: 1.5rem;
+    background: var(--app-surface-muted);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  }
+
+  .ui-panel-subtle {
+    border: 1px solid var(--app-line);
+    border-radius: 1.25rem;
+    background: var(--app-surface-strong);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  }
+
+  .ui-panel-code {
+    border: 1px solid var(--app-line);
+    border-radius: 1rem;
+    background: linear-gradient(180deg, rgba(228, 235, 243, 0.68) 0%, rgba(239, 243, 248, 0.92) 100%);
+  }
+
+  .ui-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(15, 23, 36, 0.46);
+  }
+
+  .ui-input,
+  .ui-select,
+  .ui-textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 23, 36, 0.12);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.88);
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    color: var(--app-text);
+    outline: none;
+    transition:
+      border-color 140ms ease,
+      box-shadow 140ms ease,
+      background-color 140ms ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+
+  .ui-textarea {
+    min-height: 7.5rem;
+    line-height: 1.75;
+    resize: vertical;
+  }
+
+  .ui-input:focus,
+  .ui-select:focus,
+  .ui-textarea:focus {
+    border-color: rgba(15, 23, 36, 0.28);
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow:
+      0 0 0 4px var(--app-focus),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .ui-button,
+  .ui-button-secondary,
+  .ui-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.8rem 1.05rem;
+    font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    transition:
+      border-color 140ms ease,
+      background-color 140ms ease,
+      color 140ms ease,
+      transform 140ms ease,
+      box-shadow 140ms ease;
+  }
+
+  .ui-button {
+    border: 1px solid var(--app-accent);
+    background: linear-gradient(180deg, #172230 0%, #0f1724 100%);
+    color: #edf2f7;
+    box-shadow: 0 14px 30px rgba(15, 23, 36, 0.18);
+  }
+
+  .ui-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, #1d2a3a 0%, #172230 100%);
+    box-shadow: 0 18px 34px rgba(15, 23, 36, 0.2);
+  }
+
+  .ui-button-secondary,
+  .ui-link-button {
+    border: 1px solid rgba(15, 23, 36, 0.12);
+    background: rgba(255, 255, 255, 0.76);
+    color: var(--app-text);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.52);
+  }
+
+  .ui-button-secondary:hover:not(:disabled),
+  .ui-link-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(15, 23, 36, 0.22);
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .ui-button:disabled,
+  .ui-button-secondary:disabled,
+  .ui-link-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .ui-kicker {
+    font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(15, 23, 36, 0.46);
+  }
+
+  .ui-mono {
+    font-family: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ai-seo-localization-tool",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @seo-localization/api",
+    "dev:web": "npm run dev --workspace @seo-localization/web",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
+
